@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "userName": "test",
+    "password": "1234",
+    "userLevel": "admin",
+    "isSubscribed": true
+  },
+  {
+    "id": 2,
+    "userName": "Pelle P",
+    "password": "U2FsdGVkX19O8ezIicfRexVVY93uMUDTK9uv0ebP59Y=",
+    "userLevel": "user",
+    "isSubscribed": false
+  }
+]

@@ -8,7 +8,38 @@ router.get('/', function(req, res, next) {
 		if (err) throw err;
 
 		var users = JSON.parse(data);
-		res.send(users);
+		var usersToSend = [];
+
+        users.forEach((user) => {
+            var tempUser = {
+				"id": user.id, 
+				"userName": user.userName, 
+				"userLevel": user.userLevel,
+				"isSubscribed": user.isSubscribed
+			};
+			
+			usersToSend.push(tempUser);
+        });
+
+		res.send(usersToSend);
+	});
+});
+
+router.get('/:id', (req, res) => {
+	fs.readFile('./data/users.json', (err, data) => {
+		if (err) throw err;
+
+		var users = JSON.parse(data);
+
+		var user = users.find(x => x.id == req.params.id);
+		var userToSend = { 
+			"id": user.id, 
+			"userName": user.userName, 
+			"userLevel": user.userLevel,
+			"isSubscribed": user.isSubscribed
+		};
+
+		res.send(userToSend);
 	});
 });
 

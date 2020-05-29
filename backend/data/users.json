@@ -2,7 +2,7 @@
   {
     "id": 1,
     "userName": "test",
-    "password": "1234",
+    "password": "U2FsdGVkX18kS+Ow7n/CURqgBXfPM8ycmz0At8bHBgo=",
     "userLevel": "admin",
     "isSubscribed": true
   },
@@ -12,5 +12,12 @@
     "password": "U2FsdGVkX19O8ezIicfRexVVY93uMUDTK9uv0ebP59Y=",
     "userLevel": "user",
     "isSubscribed": false
+  },
+  {
+    "userName": "Bananbåt",
+    "password": "U2FsdGVkX1+/wBDQp4nievHA6XfiykvQpnO66iMJjcA=",
+    "userLevel": "user",
+    "isSubscribed": true,
+    "id": 3
   }
 ]

@@ -9,11 +9,10 @@ router.post('/', function(req, res) {
         var salt = 'Salta era lösenord!';
 
         var users = JSON.parse(data);
-
         
         // var newUser = JSON.parse(req.body);
         var newUser = req.body;
-        // newUser.id = (newUser.id === 0 || undefined === newUser.id) ? users.length + 1 : newUser.id;
+        newUser.id = (newUser.id === 0 || undefined === newUser.id) ? users.length + 1 : newUser.id;
 
         newUser.password = crypto.AES.encrypt(
             newUser.password, 

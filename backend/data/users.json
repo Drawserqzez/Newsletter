@@ -4,20 +4,23 @@
     "userName": "test",
     "password": "U2FsdGVkX18kS+Ow7n/CURqgBXfPM8ycmz0At8bHBgo=",
     "userLevel": "admin",
-    "isSubscribed": true
+    "isSubscribed": true,
+    "email": "admin@newsletterpage.fake"
   },
   {
     "id": 2,
     "userName": "Pelle P",
     "password": "U2FsdGVkX19O8ezIicfRexVVY93uMUDTK9uv0ebP59Y=",
     "userLevel": "user",
-    "isSubscribed": false
+    "isSubscribed": false,
+    "email": "pellep@mejladress.fake"
   },
   {
     "userName": "Bananbåt",
     "password": "U2FsdGVkX1+/wBDQp4nievHA6XfiykvQpnO66iMJjcA=",
     "userLevel": "user",
     "isSubscribed": true,
-    "id": 3
+    "id": 3,
+    "email": "chiquita@bananadresser.fake"
   }
 ]

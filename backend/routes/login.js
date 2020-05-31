@@ -16,8 +16,9 @@ router.post('/', (req, res) => {
         if (err) throw err;
 
         var users = JSON.parse(data);
+        var isUserAdmin = false;
 
-        users.forEach((user) => {
+        for (var user of users) {
             var passwordBytes = crypto.AES.decrypt(user.password, salt);
             var password = passwordBytes.toString(crypto.enc.Utf8);
             // console.log(password);
@@ -30,13 +31,15 @@ router.post('/', (req, res) => {
             // console.log(loggedIn);
 
             if (loggedIn) {
-                res.send(loggedIn);
+                isUserAdmin = user.userLevel === 'admin';
+                break;
             }
+        };
+        
+        res.send({ 
+            "loginSuccessful": loggedIn,
+            "isUserAdmin": isUserAdmin
         });
-
-        if (!loggedIn) {
-            res.sendStatus(403);
-        }
     });
 });
 

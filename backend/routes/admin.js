@@ -3,7 +3,7 @@ var router = express.Router();
 var axios = require('axios');
 var fs = require('fs');
 
-router.get('/', (req, res) => {
+router.post('/', (req, res) => {
     var user = req.body;
 
     axios.post('http://localhost:3000/login', {
@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
         "password": user.password
     })
     .then((response) => {
-        // console.log(response.data);
+        console.log(response.data);
         // var isUserLoggedIn = response.data;
 
         if (response.data.loginSuccessful && response.data.isUserAdmin) {

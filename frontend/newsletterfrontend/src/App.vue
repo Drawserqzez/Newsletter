@@ -12,7 +12,7 @@
         <button @click="changeSubscription">
           {{ user.isSubscribed ? 'Avprenumerera' : 'Prenumerera' }}
         </button>
-        <div vi-if="user.userLevel === 'admin'">
+        <div v-if="user.userLevel === 'admin'">
           Du är en administratör.
           <div v-if="adminData !== null">
             <button @click="adminData=null">&times;</button>
@@ -26,7 +26,7 @@
           </form>
         </div>
       </div>
-      <Login :login="login" v-if="showLogin"/>
+      <Login :login="login" :registerUser="registerUser" v-if="showLogin"/>
     </div>
   </div>
 </template>
@@ -86,6 +86,17 @@ export default {
           this.home();
         }
       })
+    },
+    registerUser: function(user) {
+      fetch('http://localhost:3000/addUser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+      })
+      .then((response) => { return response.json(); })
+      .then((jsonData) => console.log(jsonData));
     },
     changeSubscription: function() {
       this.user.isSubscribed = !this.user.isSubscribed;

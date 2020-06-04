@@ -43,4 +43,21 @@ router.get('/:id', (req, res) => {
 	});
 });
 
+router.put('/:id', (req, res) => {
+	fs.readFile('./data/users.json', (err, data) => {
+		if (err) throw err;
+
+		var users = JSON.parse(data);
+
+		var userToUpdate = users.find(x => x.id == req.params.id);
+
+		userToUpdate.isSubscribed = req.params.isSubscribed;
+		var index = users.indexOf(userToUpdate);
+
+		// Find a method to remove existing item and replace with updated one 
+
+		fs.writeFileSync('./data/users.json')
+	})
+})
+
 module.exports = router;

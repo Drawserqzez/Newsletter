@@ -22,5 +22,21 @@
     "isSubscribed": true,
     "id": 3,
     "email": "chiquita@bananadresser.fake"
+  },
+  {
+    "userName": "",
+    "email": "",
+    "password": "U2FsdGVkX1/pQedQrepUT5P44cGefLK+ODb1XVzyR+U=",
+    "isSubscribed": true,
+    "id": 4,
+    "userLevel": "user"
+  },
+  {
+    "userName": "sdsdf",
+    "email": "sfdsdfsdf@safadsf.se",
+    "password": "U2FsdGVkX19z7PYLzWY/BjyEOalZ7l4oxyueF0HykBI=",
+    "isSubscribed": true,
+    "id": 5,
+    "userLevel": "user"
   }
 ]

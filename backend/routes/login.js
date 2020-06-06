@@ -3,13 +3,12 @@ var router = express.Router();
 var fs = require('fs');
 var crypto = require('crypto-js');
 
+// Uses POST to verify the login-details provided.
 router.post('/', (req, res) => {
-    // if (err) throw err;
     var salt = 'Salta era lösenord!';
 
     var infoToCheck = req.body;
         
-    // console.log(infoToCheck);
     var loggedIn = false;
     
     fs.readFile('./data/users.json', (err, data) => {
@@ -22,14 +21,12 @@ router.post('/', (req, res) => {
         for (var user of users) {
             var passwordBytes = crypto.AES.decrypt(user.password, salt);
             var password = passwordBytes.toString(crypto.enc.Utf8);
-            // console.log(password);
 
             loggedIn = (
                 user.userName === infoToCheck.userName 
                 &&
                 password === infoToCheck.password
             );
-            // console.log(loggedIn);
 
             if (loggedIn) {
                 isUserAdmin = user.userLevel === 'admin';

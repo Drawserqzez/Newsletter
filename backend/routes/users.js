@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 
-/* GET users listing. */
+// GET all users. Passwords and email are left out of the return for security reasons.
 router.get('/', function(req, res, next) {
 	fs.readFile('./data/users.json', (err, data) => {
 		if (err) throw err;
@@ -25,6 +25,7 @@ router.get('/', function(req, res, next) {
 	});
 });
 
+// GET specific user based on ID. Passwords and email are left out here as well
 router.get('/:id', (req, res) => {
 	fs.readFile('./data/users.json', (err, data) => {
 		if (err) throw err;
@@ -43,7 +44,9 @@ router.get('/:id', (req, res) => {
 	});
 });
 
-router.put('/:id', (req, res) => {
+// PUT that changes the subscriptionstaus of the user with the specified id.
+// returns the new subscription status so that the Vue application can change the status.
+router.put('/changeSubscription/:id', (req, res) => {
 	fs.readFile('./data/users.json', (err, data) => {
 		if (err) throw err;
 
@@ -51,12 +54,16 @@ router.put('/:id', (req, res) => {
 
 		var userToUpdate = users.find(x => x.id == req.params.id);
 
-		userToUpdate.isSubscribed = req.params.isSubscribed;
-		var index = users.indexOf(userToUpdate);
+		userToUpdate.isSubscribed = !userToUpdate.isSubscribed;
+		console.log(userToUpdate);
 
-		// Find a method to remove existing item and replace with updated one 
+		var updatedData = JSON.stringify(users, null, 2);
 
-		fs.writeFileSync('./data/users.json')
+		fs.writeFileSync('./data/users.json',updatedData, (err, data) => {
+			if (err) throw err;
+		});
+				
+		res.status(201).send(userToUpdate.isSubscribed);
 	})
 })
 

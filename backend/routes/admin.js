@@ -3,6 +3,9 @@ var router = express.Router();
 var axios = require('axios');
 var fs = require('fs');
 
+// POST that returns the adminpage if the provided username and password are correct. 
+// The data is checked by accessing the login endpoint within this endpoint.
+// The returned admin-data is then displayed within the Vue app, for easy access.
 router.post('/', (req, res) => {
     var user = req.body;
 

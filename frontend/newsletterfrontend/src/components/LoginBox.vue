@@ -1,7 +1,7 @@
 <template>
     <div class="loginBox">
         <h1>Logga In</h1>
-        <!-- <p>{{ userName }} | {{ password }} </p> -->
+        <!-- Prevents submission of the forms and then sends it to the parent for processing -->
         <form  @submit.prevent="onLogin">
             <input placeholder="Användarnamn" type="text" v-model="userName" required>
             <br>

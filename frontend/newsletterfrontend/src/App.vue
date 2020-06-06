@@ -4,6 +4,7 @@
       <Header :navItems="navItems"/>
     </nav>
     <div class="wrapper">
+      <!-- TODO: Move to its own component -->
       <div v-if="user !== null">
         <h2>
           Välkommen {{ user.userName }} !
@@ -46,9 +47,12 @@ export default {
   },
   data() {
     return {
+      // Defines the local variables of this vue instance. 
       user: '',
       showLogin: false,
       adminData: null,
+      // Defines the array for the navItems. Login is empty so that the 
+      // watch-function can set it depending on the state of the user.
       navItems: {
         nothing: {
           text: 'Place',
@@ -65,9 +69,11 @@ export default {
     }
   },
   methods: {
+    // Hides the login-box
     home: function() {
       this.showLogin = false;
     },
+    // Logs the current user in. Sent as a prop to the child
     login: function(user) {
       fetch('http://localhost:3000/login', {
         method: 'POST', 
@@ -87,6 +93,7 @@ export default {
         }
       })
     },
+    // Adds the user via an API call. Sent as a prop to the child.
     registerUser: function(user) {
       fetch('http://localhost:3000/addUser', {
         method: 'POST',
@@ -98,9 +105,27 @@ export default {
       .then((response) => { return response.json(); })
       .then((jsonData) => console.log(jsonData));
     },
+    // Calls the API to update the current user's subscription status.
     changeSubscription: function() {
       this.user.isSubscribed = !this.user.isSubscribed;
+      console.log('Changing subscription...');
+
+      fetch('http://localhost:3000/users/changeSubscription/' + this.user.id, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: null
+      })
+      .then((response) => { return response.json(); })
+      .then((jsonData) => {
+        this.user.isSubscribed = jsonData.isSubscribed;
+        console.log('Subscription updated!');
+      });
     },
+    // Fetches the admin-interface and then displays it on the page.
+    // This is in order to provide the functionality of it being hidden 
+    // behind another login
     openAdminInterface: function() {
       fetch('http://localhost:3000/admin', {
         method: 'POST',
@@ -117,6 +142,7 @@ export default {
     }
   },
   watch: {
+    // Checks the conditions to set the info for the login/logout button when the user is updated.
     user: function(value) {
         if (value === null) {
           this.navItems.login = {

@@ -6,37 +6,5 @@
     "userLevel": "admin",
     "isSubscribed": true,
     "email": "admin@newsletterpage.fake"
-  },
-  {
-    "id": 2,
-    "userName": "Pelle P",
-    "password": "U2FsdGVkX19O8ezIicfRexVVY93uMUDTK9uv0ebP59Y=",
-    "userLevel": "user",
-    "isSubscribed": false,
-    "email": "pellep@mejladress.fake"
-  },
-  {
-    "userName": "Bananbåt",
-    "password": "U2FsdGVkX1+/wBDQp4nievHA6XfiykvQpnO66iMJjcA=",
-    "userLevel": "user",
-    "isSubscribed": true,
-    "id": 3,
-    "email": "chiquita@bananadresser.fake"
-  },
-  {
-    "userName": "",
-    "email": "",
-    "password": "U2FsdGVkX1/pQedQrepUT5P44cGefLK+ODb1XVzyR+U=",
-    "isSubscribed": true,
-    "id": 4,
-    "userLevel": "user"
-  },
-  {
-    "userName": "sdsdf",
-    "email": "sfdsdfsdf@safadsf.se",
-    "password": "U2FsdGVkX19z7PYLzWY/BjyEOalZ7l4oxyueF0HykBI=",
-    "isSubscribed": true,
-    "id": 5,
-    "userLevel": "user"
   }
 ]

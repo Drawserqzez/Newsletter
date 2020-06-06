@@ -3,6 +3,8 @@ var router = express.Router();
 var fs = require('fs');
 var crypto = require('crypto-js');
 
+// POSTs a new user to the datafile. Also checks wether the submitted username and email are duplicates.
+// Also uses a hardcoded and visible salt, which isn't recommended
 router.post('/', function(req, res) {
     fs.readFile('./data/users.json', (err, data) => {
         if (err) throw err;
@@ -10,7 +12,6 @@ router.post('/', function(req, res) {
 
         var users = JSON.parse(data);
         
-        // var newUser = JSON.parse(req.body);
         var newUser = req.body;
         newUser.id = users.length + 1;
 
@@ -21,7 +22,6 @@ router.post('/', function(req, res) {
 
         newUser.userLevel = 'user';
 
-        // console.log(newUser);
         var shouldAddUser = true;
 
         for (var user of users) {
@@ -52,10 +52,6 @@ router.post('/', function(req, res) {
             res.status(403).send('En användare med det namnet eller mejladressen finns redan.');
         }
     });
-});
-
-router.get('/', function(req, res) {
-    res.redirect('/');
 });
 
 module.exports = router;

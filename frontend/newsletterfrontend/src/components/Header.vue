@@ -1,5 +1,6 @@
 <template>    
     <ul>
+        <!-- Uses v-for to generate a list of navitems -->
         <li v-for="item in navItems" :key="item.id" @click="item.click">
             {{ item.text }}
         </li>

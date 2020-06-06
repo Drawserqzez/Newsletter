@@ -1,7 +1,6 @@
 # Newsletter - Algot Holton
 
 ## Backend
-
 Backendapplikationen startas med ``` nodemon start ```
 ### APIdokumentation
 APIets endpoints finns dokumenterade i koden. Egentligen bör jag nog ha en tabell med samma information här, men jag hänvisar istället till koden och kommentarerna där :)
@@ -24,7 +23,6 @@ Jag tyckte även att det blev mycket, mycket smidigare att göra ett frontend pr
 Tack vare Vue har jag inte heller haft problem med definitionen av ``` this ```, som jag har hört att några av mina klasskamrater haft svårt att greppa. Jag vet visserligen inte ifall ``` this ``` fungerar på samma sätt i react som det gör i Vue, men här så refererar alltid ``` this ``` till den instans av Vue som man arbetar i. 
 
 ## Sammanfattning
-
 Jag tyckte att den här uppgiften flöt på väldigt bra, men skulle velat ha lite mer tid till att sätta mig in i ramverket; ett önskemål som flera andra också uttryckt. Förutmo det så är jag nöjd med den här modulen, det känns som om allt nödvändigt material fanns på plats när jag behövde det, och det gjorde att jag kunde forsätta med det jag höll på med istället för att försöka hitta någon form av nödlösning på nätet.
 
 Jag vet inte vad mer jag bör skriva med, förutom att jag är nöjd med det jag gjort och att jag inte stött på några särskilda problem under arbetet. Så tack för mig!

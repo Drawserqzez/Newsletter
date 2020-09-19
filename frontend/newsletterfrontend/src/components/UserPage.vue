@@ -8,17 +8,12 @@
           {{ user.isSubscribed ? 'Avprenumerera' : 'Prenumerera' }}
         </button>
         <div v-if="user.userLevel === 'admin'">
-          Du är en administratör.
-          <div v-if="adminData !== null">
-            <button @click="adminData=null">&times;</button>
-            <div v-html="adminData"></div>
-          </div>
-          <form v-else @submit.prevent="openAdminInterface">
-            <p>Skriv in ditt lösenord för att visa admininterfacet.</p>
-            <input placeholder="Lösenord" v-model="user.password" type="password" required>
-            <br>
-            <input type="submit" value="Vidare">
-          </form>
+          Du är en administratör. 
+          Klicka 
+          <a 
+            @click="openAdminInterface" 
+            style="text-decoration: underline; color:blue; cursor: pointer"
+          >här</a> för att komma åt admininterfacet.
         </div>
       </div>
 </template>
@@ -27,7 +22,6 @@
 export default {
     props: {
         user: Object,
-        adminData: String,
         openAdminInterface: Function,
         changeSubscription: Function
     }

@@ -3,11 +3,25 @@ var router = express.Router();
 var axios = require('axios');
 var fs = require('fs');
 
+router.get('/', (req,res) => {
+    let htmlResponse = `
+        Logga in för att komma åt admin-datan. Detta är av säkerhetsskäl.
+        <form method="post">
+            <input type="text" name="userName" placeholder="Användarnamn"> <input type="password" name="password" placeholder="Lösenord">
+            <br>
+            <input type="submit" value="Hämta data">
+        </form>
+    `;
+
+    res.contentType = "html";
+    res.send(htmlResponse);
+})
+
 // POST that returns the adminpage if the provided username and password are correct. 
 // The data is checked by accessing the login endpoint within this endpoint.
-// The returned admin-data is then displayed within the Vue app, for easy access.
 router.post('/', (req, res) => {
     var user = req.body;
+    console.log(user);
 
     axios.post('http://localhost:3000/login', {
         "userName": user.userName,
@@ -31,7 +45,7 @@ router.post('/', (req, res) => {
                 `;
 
                 if (user.isSubscribed) {
-                    emailString += ',' + user.email;
+                    emailString += user.email + ', ';
                 }
             });
 

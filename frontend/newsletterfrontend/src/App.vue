@@ -4,7 +4,7 @@
       <Header :navItems="navItems"/>
     </nav>
     <div class="wrapper">
-      <UserPage :user="user" :adminData="adminData" :openAdminInterface="openAdminInterface" :changeSubscription="changeSubscription"/>
+      <UserPage :user="user" :openAdminInterface="openAdminInterface" :changeSubscription="changeSubscription"/>
       <Login :login="login" :registerUser="registerUser" v-if="showLogin"/>
     </div>
   </div>
@@ -30,7 +30,6 @@ export default {
       // Defines the local variables of this vue instance. 
       user: '',
       showLogin: false,
-      adminData: null,
       // Defines the array for the navItems. Login is empty so that the 
       // watch-function can set it depending on the state of the user.
       navItems: {
@@ -107,18 +106,20 @@ export default {
     // This is in order to provide the functionality of it being hidden 
     // behind another login
     openAdminInterface: function() {
-      fetch('http://localhost:3000/admin', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(this.user)
-      })
-      .then((response) => { return response.text(); })
-      .then((text) => {
-        this.adminData = text;
-      })
-      this.user.password = null;
+      // fetch('http://localhost:3000/admin', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify(this.user)
+      // })
+      // .then((response) => { return response.text(); })
+      // .then((text) => {
+      //   this.adminData = text;
+      // })
+      // this.user.password = null;
+
+      window.open('http://localhost:3000/admin', '_blank');
     }
   },
   watch: {
